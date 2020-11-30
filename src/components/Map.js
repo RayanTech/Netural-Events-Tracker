@@ -8,7 +8,7 @@ import LocationInfoBox from './LocationInfoBox'
 const Map = ({eventData ,center, zoom}) => {
 
     const [locationInfo, setLocationInfo] = useState(null)
-
+    
     const markers = eventData.map(ev =>{
         if(ev.categories[0].id === 15){
                 return  <LocationIceBerg lat ={ev.geometries[0].coordinates[1]} lng={ev.geometries[0].coordinates[0]} 
@@ -22,9 +22,10 @@ const Map = ({eventData ,center, zoom}) => {
     })
 
     return (
+        
         <div className="map">
             <GoogleMapReact
-                bootstrapURLKeys={{key: 'Please replace this text with your Google Map API'}}
+                bootstrapURLKeys={process.env.REACT_APP_MAP_KEY}
                 defaultCenter={center}
                 defaultZoom={zoom}
             >
